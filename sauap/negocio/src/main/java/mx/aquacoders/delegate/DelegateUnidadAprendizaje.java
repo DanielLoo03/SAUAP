@@ -14,7 +14,7 @@ import mx.aquacoders.integracion.ServiceLocator;
  */
 public class DelegateUnidadAprendizaje {
     
-    public void saveAlumno(UnidadAprendizaje unidadAprendizaje){
+    public void saveUnidadAprendizaje(UnidadAprendizaje unidadAprendizaje){
         ServiceLocator.getInstanceUnidadAprendizajeDAO().save(unidadAprendizaje);
     }
     
