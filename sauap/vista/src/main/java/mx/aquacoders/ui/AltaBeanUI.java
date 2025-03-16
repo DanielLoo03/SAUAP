@@ -41,5 +41,13 @@ public class AltaBeanUI implements Serializable{
     public void alta() throws IOException{
         altaHelper.AltaUnidadAprendizaje(unidadAprendizaje);
     }
-   
+    
+    public UnidadAprendizaje getUnidadAprendizaje() {
+        return unidadAprendizaje;
+    }
+
+    public void setUnidadAprendizaje(UnidadAprendizaje unidadAprendizaje) {
+        this.unidadAprendizaje = unidadAprendizaje;
+    }
+    
 }
