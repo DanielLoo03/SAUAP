@@ -63,6 +63,13 @@ public class UnidadAprendizaje implements Serializable {
     public UnidadAprendizaje(Integer idUnidadAprendizaje) {
         this.idUnidadAprendizaje = idUnidadAprendizaje;
     }
+    
+    public UnidadAprendizaje(String nombreUnidadAprendizaje, int horasClase, int horasTaller, int horasLaboratorio) {
+        this.nombreUnidadAprendizaje = nombreUnidadAprendizaje;
+        this.horasClase = horasClase;
+        this.horasTaller = horasTaller;
+        this.horasLaboratorio = horasLaboratorio;
+    }
 
     public UnidadAprendizaje(Integer idUnidadAprendizaje, String nombreUnidadAprendizaje, int horasClase, int horasTaller, int horasLaboratorio) {
         this.idUnidadAprendizaje = idUnidadAprendizaje;
