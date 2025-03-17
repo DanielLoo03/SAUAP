@@ -13,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.component.UIComponent;
+import javax.faces.validator.FacesValidator;
 import javax.faces.validator.ValidatorException;
 import mx.aquacoders.helper.AltaHelper;
 import mx.aquacoders.entidad.UnidadAprendizaje;
@@ -42,6 +43,7 @@ public class AltaBeanUI implements Serializable{
 
     public void alta() throws IOException{
         altaHelper.AltaUnidadAprendizaje(unidadAprendizaje);
+        mostrarMensajeExito(); 
     }
     
     public UnidadAprendizaje getUnidadAprendizaje() {
@@ -60,6 +62,24 @@ public class AltaBeanUI implements Serializable{
                 "No incluir caracteres especiales.", null);
             throw new ValidatorException(message);
         }
+    }
+    
+    public void validarHorasTotales(FacesContext contexto, UIComponent componente, Object valor) {
+        int horas_clase = unidadAprendizaje.getHorasClase(); 
+        int horas_taller = unidadAprendizaje.getHorasTaller(); 
+        int horas_laboratorio = unidadAprendizaje.getHorasLaboratorio();
+        
+        int totalHoras = horas_clase + horas_taller + horas_laboratorio;
+        if (totalHoras < 1) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                "Se debe registrar al menos una hora en total.", null);
+            throw new ValidatorException(message);
+        }
+    }
+    
+    public void mostrarMensajeExito() {
+        FacesMessage mensaje_exito = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unidad de aprendizaje registrada.", null);
+        FacesContext.getCurrentInstance().addMessage(null, mensaje_exito);
     }
     
 }
