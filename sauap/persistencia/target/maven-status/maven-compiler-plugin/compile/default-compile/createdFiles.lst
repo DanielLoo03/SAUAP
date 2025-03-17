@@ -1,0 +1,5 @@
+mx\aquacoders\integracion\ServiceLocator.class
+mx\aquacoders\dao\UnidadAprendizajeDAO.class
+mx\aquacoders\persistencia\AbstractDAO.class
+mx\aquacoders\persistencia\HibernateUtil.class
+mx\aquacoders\persistencia\InterfaceDAO.class
