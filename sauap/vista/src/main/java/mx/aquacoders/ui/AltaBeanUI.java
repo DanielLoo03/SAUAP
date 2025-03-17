@@ -12,6 +12,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.component.UIComponent;
+import javax.faces.validator.ValidatorException;
 import mx.aquacoders.helper.AltaHelper;
 import mx.aquacoders.entidad.UnidadAprendizaje;
 
@@ -48,6 +50,16 @@ public class AltaBeanUI implements Serializable{
 
     public void setUnidadAprendizaje(UnidadAprendizaje unidadAprendizaje) {
         this.unidadAprendizaje = unidadAprendizaje;
+    }
+    
+    public void validarExpresionesRegulares(FacesContext contexto, UIComponent componente, Object valor) {
+        String nombre = (String) valor;
+        
+        if (!nombre.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ ]+$")) {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                "No incluir caracteres especiales.", null);
+            throw new ValidatorException(message);
+        }
     }
     
 }

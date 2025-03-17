@@ -22,7 +22,10 @@ and open the template in the editor.
             <p:panel style="text-align: center; width: 60%; margin: auto;  margin-top: 30px; border: none;">
                 <h:panelGrid columns="1" styleClass="formulario" cellpadding="10" style="display: flex; justify-content: center; align-items: center; font-family: Tahoma, sans-serif; font-size: 15px;">
                     <h:outputLabel for="campo-nombre" value="Nombre de unidad de aprendizaje" />
-                    <p:inputText id="campo-nombre" value="#{altaUI.unidadAprendizaje.nombreUnidadAprendizaje}" styleClass="input-texto"/>
+                    <p:inputText id="campo-nombre" value="#{altaUI.unidadAprendizaje.nombreUnidadAprendizaje}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio." validator="#{altaUI.validarExpresionesRegulares}">
+                        <f:validateLength minimum="1" maximum="100" />
+                    </p:inputText>
+                    <p:message for="campo-nombre" display="both"/>
 
                     <h:outputLabel for="spinner-horas-clase" value="Horas clase" />
                     <p:spinner id="spinner-horas-clase" value="#{altaUI.unidadAprendizaje.horasClase}" min="0" max="10" />
@@ -34,7 +37,7 @@ and open the template in the editor.
                     <p:spinner id="spinner-horas-laboratorio" value="#{altaUI.unidadAprendizaje.horasLaboratorio}" min="0" max="10" />
                     
                     <h:panelGrid columns="2" style="width: 100%; justify-content: center; display: flex; margin-top: 25px">
-                        <p:commandButton value="Confirmar alta" actionListener="#{altaUI.alta}" styleClass="boton-principal"  style="margin-right: 50px;"/>
+                        <p:commandButton value="Confirmar alta" actionListener="#{altaUI.alta}" styleClass="boton-principal"  style="margin-right: 50px;" process="@form" update="@form"/>
                         <p:commandButton value="Cancelar alta" action="#{bean.cancel}" styleClass="boton-secundario"/>
                     </h:panelGrid>
                 </h:panelGrid>
