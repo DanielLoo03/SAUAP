@@ -23,21 +23,23 @@ and open the template in the editor.
                 <h:panelGrid columns="1" styleClass="formulario" cellpadding="10" style="display: flex; justify-content: center; align-items: center; font-family: Tahoma, sans-serif; font-size: 15px;">
                     <h:outputLabel for="campo-nombre" value="Nombre" /> 
                     <h:inputText id="campo-nombre" value="#{altaProfesorUI.profesor.nombreProfesor}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
-                         
+                        <f:validateLength minimum="1" maximum="50" />
+                        <f:validator validatorId="validarExpresionesRegulares" />
                     </h:inputText>
                     <p:message for="campo-nombre" display="both"/>
                     <p:growl id="mensaje_exito_campo_nombre"/>
                     
                     <h:outputLabel for="campo-apellido" value="Apellido" />
                     <h:inputText id="campo-apellido" value="#{altaProfesorUI.profesor.apellido}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
-                         
+                        <f:validateLength minimum="1" maximum="50" />
                     </h:inputText>
                     <p:message for="campo-apellido" display="both"/>
                     <p:growl id="mensaje_exito_campo_apellido"/>
                     
                     <h:outputLabel for="campo-rfc" value="RFC" />
                     <h:inputText id="campo-rfc" value="#{altaProfesorUI.profesor.rfc}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
-                         
+                        <f:validateLength minimum="13" maximum="13" />
+                        <f:validator validatorId="validarRFC" />
                     </h:inputText>
                     <p:message for="campo-rfc" display="both"/>
                     <p:growl id="mensaje_exito_campo_rfc"/>

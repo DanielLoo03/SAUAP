@@ -19,6 +19,8 @@ import mx.aquacoders.entidad.Profesor;
 import mx.aquacoders.helper.AltaHelper;
 import mx.aquacoders.entidad.UnidadAprendizaje;
 import mx.aquacoders.helper.AltaProfesorHelper;
+import static mx.aquacoders.ui.ValidadorRFC.esVocal;
+import static mx.aquacoders.ui.ValidadorRFC.lanzarExcepcionRFC;
 
 /**
  *
@@ -56,7 +58,7 @@ public class AltaProfesorBeanUI implements Serializable{
         this.profesor = profesor;
     }
     
-    /*
+    
     public void validarExpresionesRegulares(FacesContext contexto, UIComponent componente, Object valor) {
         String nombre = (String) valor;
         
@@ -67,19 +69,46 @@ public class AltaProfesorBeanUI implements Serializable{
         }
     }
     
-    public void validarHorasTotales(FacesContext contexto, UIComponent componente, Object valor) {
-        int horas_clase = unidadAprendizaje.getHorasClase(); 
-        int horas_taller = unidadAprendizaje.getHorasTaller(); 
-        int horas_laboratorio = unidadAprendizaje.getHorasLaboratorio();
+    public void validarRFC(FacesContext contexto, UIComponent componente, Object valor) {
+        String rfc = (String) valor;
+        char[] rfc_separado = rfc.toCharArray();
+        int anio;
+        int mes;
+        int dia;
         
-        int totalHoras = horas_clase + horas_taller + horas_laboratorio;
-        if (totalHoras < 1) {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-                "Se debe registrar al menos una hora en total.", null);
-            throw new ValidatorException(message);
+        for(int i = 0; i < 4; i++){
+            if (i == 1){
+                if (!esVocal(rfc_separado[i])){
+                    lanzarExcepcionRFC();
+                }
+            }
+            else{
+                if(!Character.isLetter(rfc_separado[i])){
+                    lanzarExcepcionRFC();
+                }
+            }
+        }
+        
+        if(!Character.isDigit(rfc_separado[4])){lanzarExcepcionRFC();}
+        if(!Character.isDigit(rfc_separado[5])){lanzarExcepcionRFC();}
+        
+        mes = Integer.parseInt("" + rfc_separado[6] + rfc_separado[7]);
+        dia = Integer.parseInt("" + rfc_separado[8] + rfc_separado[9]);
+        
+        if(mes < 1 || mes > 12){
+            lanzarExcepcionRFC();
+        }
+        if(dia < 1 || dia > 31){
+            lanzarExcepcionRFC();
+        }
+        
+        for(int j = 10; j < 13; j++){
+            if(!Character.isLetterOrDigit(rfc_separado[j])){
+                lanzarExcepcionRFC();
+            }
         }
     }
-    */
+    
     
     public void mostrarMensajeExito() {
         FacesMessage mensaje_exito = new FacesMessage(FacesMessage.SEVERITY_INFO, "Profesor registrado.", null);
