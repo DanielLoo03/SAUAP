@@ -5,6 +5,7 @@
  */
 package mx.aquacoders.integracion;
 
+import mx.aquacoders.dao.ProfesorDAO;
 import mx.aquacoders.dao.UnidadAprendizajeDAO;
 
 
@@ -15,6 +16,7 @@ import mx.aquacoders.dao.UnidadAprendizajeDAO;
 public class ServiceLocator {
     
     private static UnidadAprendizajeDAO unidadAprendizajeDAO;
+    private static ProfesorDAO profesorDAO;
     /**
      * se crea la instancia para alumno DAO si esta no existe
      */
@@ -24,6 +26,15 @@ public class ServiceLocator {
             return unidadAprendizajeDAO;
         } else{
             return unidadAprendizajeDAO;
+        }
+    }
+    
+    public static ProfesorDAO getInstanceProfesorDAO(){
+        if(profesorDAO == null){
+            profesorDAO = new ProfesorDAO();
+            return profesorDAO;
+        } else{
+            return profesorDAO;
         }
     }
     

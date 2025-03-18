@@ -5,6 +5,7 @@
  */
 package mx.aquacoders.integracion;
 
+import mx.aquacoders.facade.FacadeProfesor;
 import mx.aquacoders.facade.FacadeUnidadAprendizaje;
 
 /**
@@ -13,7 +14,8 @@ import mx.aquacoders.facade.FacadeUnidadAprendizaje;
  */
 public class ServiceFacadeLocator {
     
-    private static FacadeUnidadAprendizaje facadeUnidadAprendizaje ;
+    private static FacadeUnidadAprendizaje facadeUnidadAprendizaje;
+    private static FacadeProfesor facadeProfesor;
     
     public static FacadeUnidadAprendizaje getInstanceFacadeUnidadAprendizaje() {
         if (facadeUnidadAprendizaje == null) {
@@ -21,6 +23,15 @@ public class ServiceFacadeLocator {
             return facadeUnidadAprendizaje;
         } else {
             return facadeUnidadAprendizaje;
+        }
+    }
+    
+    public static FacadeProfesor getInstanceFacadeProfesor() {
+        if (facadeProfesor == null) {
+            facadeProfesor = new FacadeProfesor();
+            return facadeProfesor;
+        } else {
+            return facadeProfesor;
         }
     }
     

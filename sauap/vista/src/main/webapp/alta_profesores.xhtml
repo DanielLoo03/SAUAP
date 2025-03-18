@@ -16,31 +16,35 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <p:panel styleClass="panel-decorativo">
-            <h:outputText value="Alta de unidades de aprendizaje" style="color: #E4F9F5;" />
+            <h:outputText value="Alta de profesores" style="color: #E4F9F5;" />
         </p:panel>
         <h:form>
             <p:panel style="text-align: center; width: 60%; margin: auto;  margin-top: 30px; border: none;">
                 <h:panelGrid columns="1" styleClass="formulario" cellpadding="10" style="display: flex; justify-content: center; align-items: center; font-family: Tahoma, sans-serif; font-size: 15px;">
-                    <h:outputLabel for="campo-nombre" value="Nombre de unidad de aprendizaje" />
-                    <h:inputText id="campo-nombre" value="#{altaUI.unidadAprendizaje.nombreUnidadAprendizaje}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
-                        <f:validateLength minimum="1" maximum="100" />
-                        <f:validator validatorId="validarExpresionesRegulares" />
+                    <h:outputLabel for="campo-nombre" value="Nombre" /> 
+                    <h:inputText id="campo-nombre" value="#{altaProfesorUI.profesor.nombreProfesor}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
+                         
                     </h:inputText>
                     <p:message for="campo-nombre" display="both"/>
-                    <p:growl id="mensaje_exito"/>
-
-                    <h:outputLabel for="spinner-horas-clase" value="Horas clase" />
-                    <p:spinner id="spinner-horas-clase" value="#{altaUI.unidadAprendizaje.horasClase}" min="0" max="10" />
-
-                    <h:outputLabel for="spinner-horas-taller" value="Horas taller" />
-                    <p:spinner id="spinner-horas-taller" value="#{altaUI.unidadAprendizaje.horasTaller}" min="0" max="10" />
-
-                    <h:outputLabel for="spinner-horas-laboratorio" value="Horas laboratorio" />
-                    <p:spinner id="spinner-horas-laboratorio" value="#{altaUI.unidadAprendizaje.horasLaboratorio}" min="0" max="10" />
+                    <p:growl id="mensaje_exito_campo_nombre"/>
+                    
+                    <h:outputLabel for="campo-apellido" value="Apellido" />
+                    <h:inputText id="campo-apellido" value="#{altaProfesorUI.profesor.apellido}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
+                         
+                    </h:inputText>
+                    <p:message for="campo-apellido" display="both"/>
+                    <p:growl id="mensaje_exito_campo_apellido"/>
+                    
+                    <h:outputLabel for="campo-rfc" value="RFC" />
+                    <h:inputText id="campo-rfc" value="#{altaProfesorUI.profesor.rfc}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
+                         
+                    </h:inputText>
+                    <p:message for="campo-rfc" display="both"/>
+                    <p:growl id="mensaje_exito_campo_rfc"/>
                     
                     <h:panelGrid columns="2" style="width: 100%; justify-content: center; display: flex; margin-top: 25px">
-                        <p:commandButton value="Confirmar alta" actionListener="#{altaUI.alta}" styleClass="boton-principal"  style="margin-right: 50px;" process="@form" update="@form, mensaje_exito"/>
-                        <p:commandButton value="Cancelar alta" action="#{bean.cancel}" styleClass="boton-secundario"/>
+                        <p:commandButton value="Confirmar alta" actionListener="#{altaProfesorUI.altaProfesor}" styleClass="boton-principal"  style="margin-right: 50px;" process="@form" update="@form, mensaje_exito_campo_nombre, mensaje_exito_campo_apellido, mensaje_exito_campo_rfc"/>
+                        <p:commandButton value="Cancelar alta"  styleClass="boton-secundario"/>
                     </h:panelGrid>
                 </h:panelGrid>
             </p:panel>
