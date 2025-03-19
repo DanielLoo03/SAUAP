@@ -62,7 +62,7 @@ public class ValidadorRFC implements Validator{
     }
     
     public static boolean esVocal(char caracter) {
-        return String.valueOf(caracter).contains("aeiouAEIOU");
+        return "aeiouAEIOU".indexOf(caracter) != -1;
     }
     
     public static void lanzarExcepcionRFC(){
