@@ -25,6 +25,10 @@ and open the template in the editor.
                     <h:inputText id="campo-nombre" value="#{altaUI.unidadAprendizaje.nombreUnidadAprendizaje}" styleClass="input-texto" required="true" requiredMessage="El campo es obligatorio.">
                         <f:validateLength minimum="1" maximum="100" />
                         <f:validator validatorId="validarExpresionesRegulares" />
+                        <f:validator validatorId="validarHorasTotales" />
+                        <f:attribute name="horas_clase" value="#{altaUI.unidadAprendizaje.horasClase}" />
+                        <f:attribute name="horas_taller" value="#{altaUI.unidadAprendizaje.horasTaller}" />
+                        <f:attribute name="horas_laboratorio" value="#{altaUI.unidadAprendizaje.horasLaboratorio}" />
                     </h:inputText>
                     <p:message for="campo-nombre" display="both"/>
                     <p:growl id="mensaje_exito"/>
