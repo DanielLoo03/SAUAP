@@ -33,15 +33,18 @@ and open the template in the editor.
                     <p:message for="campo-nombre" display="both"/>
                     <p:growl id="mensaje_exito"/>
 
-                    <h:outputLabel for="spinner-horas-clase" value="Horas clase" />
-                    <p:spinner id="spinner-horas-clase" value="#{altaUI.unidadAprendizaje.horasClase}" min="0" max="10" />
+                    <p:spinner id="spinner-horas-clase" value="#{altaUI.unidadAprendizaje.horasClase}" min="0" max="10">
+                        <p:ajax process="@this" update="spinner-horas-clase spinner-horas-taller spinner-horas-laboratorio"/>
+                    </p:spinner>
 
-                    <h:outputLabel for="spinner-horas-taller" value="Horas taller" />
-                    <p:spinner id="spinner-horas-taller" value="#{altaUI.unidadAprendizaje.horasTaller}" min="0" max="10" />
+                    <p:spinner id="spinner-horas-taller" value="#{altaUI.unidadAprendizaje.horasTaller}" min="0" max="10">
+                        <p:ajax process="@this" update="spinner-horas-clase spinner-horas-taller spinner-horas-laboratorio"/>
+                    </p:spinner>
 
-                    <h:outputLabel for="spinner-horas-laboratorio" value="Horas laboratorio" />
-                    <p:spinner id="spinner-horas-laboratorio" value="#{altaUI.unidadAprendizaje.horasLaboratorio}" min="0" max="10" />
-                    
+                    <p:spinner id="spinner-horas-laboratorio" value="#{altaUI.unidadAprendizaje.horasLaboratorio}" min="0" max="10">
+                        <p:ajax process="@this" update="spinner-horas-clase spinner-horas-taller spinner-horas-laboratorio"/>
+                    </p:spinner>
+
                     <h:panelGrid columns="2" style="width: 100%; justify-content: center; display: flex; margin-top: 25px">
                         <p:commandButton value="Confirmar alta" actionListener="#{altaUI.alta}" styleClass="boton-principal"  style="margin-right: 50px;" process="@form" update="@form, mensaje_exito"/>
                         <p:commandButton value="Cancelar alta" action="#{bean.cancel}" styleClass="boton-secundario"/>
