@@ -43,13 +43,17 @@ public class ValidadorRFC implements Validator{
         if(!Character.isDigit(rfc_separado[4])){lanzarExcepcionRFC();}
         if(!Character.isDigit(rfc_separado[5])){lanzarExcepcionRFC();}
         
-        mes = Integer.parseInt("" + rfc_separado[6] + rfc_separado[7]);
-        dia = Integer.parseInt("" + rfc_separado[8] + rfc_separado[9]);
-        
-        if(mes < 1 || mes > 12){
-            lanzarExcepcionRFC();
+        try{
+            mes = Integer.parseInt("" + rfc_separado[6] + rfc_separado[7]);
+            dia = Integer.parseInt("" + rfc_separado[8] + rfc_separado[9]);
+            if(mes < 1 || mes > 12){
+                lanzarExcepcionRFC();
+            }
+            if(dia < 1 || dia > 31){
+                lanzarExcepcionRFC();
+            }
         }
-        if(dia < 1 || dia > 31){
+        catch(NumberFormatException e){
             lanzarExcepcionRFC();
         }
         
